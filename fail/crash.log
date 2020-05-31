@@ -1,0 +1,54 @@
+2020/05/31 03:13:49 [INFO] Terraform version: 0.13.0 dev 
+2020/05/31 03:13:49 [INFO] Go runtime version: go1.14.3
+2020/05/31 03:13:49 [INFO] CLI args: []string{"/usr/local/bin/terraform_git", "init", "-backend-config=bucket=he-aws-tf-app-itf-he-aws-tf-mod-aws-abs-env-1", "-backend-config=key=he_aws_tf_app_itf_abs_env_1_bug_001_fail.tfstate", "-input=false", "-no-color", "-upgrade", "-var=he_aws_tf_app_rgn_eu=[\"eu\", \"west\", \"2\", ]", "-var=he_aws_tf_app_rgn_us=[\"us\", \"east\", \"1\", ]", "-var-file=./he_aws_tf_mod_he_aws_tf_app_itf_cnf.tfvars"}
+2020/05/31 03:13:49 [DEBUG] Attempting to open CLI config file: /Users/adhorden/.terraformrc
+2020/05/31 03:13:49 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/05/31 03:13:49 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2020/05/31 03:13:49 [DEBUG] ignoring non-existing provider search directory /Users/adhorden/Library/Application Support/io.terraform/plugins
+2020/05/31 03:13:49 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2020/05/31 03:13:49 [INFO] CLI command args: []string{"init", "-backend-config=bucket=he-aws-tf-app-itf-he-aws-tf-mod-aws-abs-env-1", "-backend-config=key=he_aws_tf_app_itf_abs_env_1_bug_001_fail.tfstate", "-input=false", "-no-color", "-upgrade", "-var=he_aws_tf_app_rgn_eu=[\"eu\", \"west\", \"2\", ]", "-var=he_aws_tf_app_rgn_us=[\"us\", \"east\", \"1\", ]", "-var-file=./he_aws_tf_mod_he_aws_tf_app_itf_cnf.tfvars"}
+2020/05/31 03:13:49 [TRACE] Meta.Backend: merging -backend-config=... CLI overrides into backend configuration
+2020/05/31 03:13:49 [TRACE] Meta.Backend: built configuration for "s3" backend with hash value 1332695180
+2020/05/31 03:13:49 [TRACE] Preserving existing state lineage "2707f3d8-aa31-50e0-50bb-0c7d744a33b9"
+2020/05/31 03:13:49 [TRACE] Preserving existing state lineage "2707f3d8-aa31-50e0-50bb-0c7d744a33b9"
+2020/05/31 03:13:49 [TRACE] Meta.Backend: working directory was previously initialized for "s3" backend
+2020/05/31 03:13:49 [TRACE] backendConfigNeedsMigration: given configuration matches cached configuration, so no migration is required
+2020/05/31 03:13:49 [TRACE] Meta.Backend: using already-initialized "s3" backend configuration
+2020/05/31 03:13:49 [INFO] Setting AWS metadata API timeout to 100ms
+2020/05/31 03:13:50 [INFO] Ignoring AWS metadata API endpoint at default location as it doesn't return any instance-id
+2020/05/31 03:13:50 [INFO] AWS Auth provider used: "SharedCredentialsProvider"
+2020/05/31 03:13:50 [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2020/05/31 03:13:51 [TRACE] Meta.Backend: instantiated backend of type *s3.Backend
+2020/05/31 03:13:51 [DEBUG] checking for provisioner in "."
+2020/05/31 03:13:51 [DEBUG] checking for provisioner in "/usr/local/bin"
+2020/05/31 03:13:51 [INFO] Failed to read plugin lock file .terraform/plugins/darwin_amd64/lock.json: open .terraform/plugins/darwin_amd64/lock.json: no such file or directory
+2020/05/31 03:13:51 [TRACE] Meta.Backend: backend *s3.Backend does not support operations, so wrapping it in a local backend
+panic: dots are not allowed
+
+goroutine 1 [running]:
+github.com/hashicorp/terraform/addrs.MustParseProviderPart(0xc00050aa38, 0x6, 0x60, 0x60)
+	/Users/adhorden/adhorden/terraform_git/addrs/provider.go:404 +0xa2
+github.com/hashicorp/terraform/addrs.NewDefaultProvider(...)
+	/Users/adhorden/adhorden/terraform_git/addrs/provider.go:122
+github.com/hashicorp/terraform/addrs.ImpliedProviderForUnqualifiedType(0xc00050aa38, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/Users/adhorden/adhorden/terraform_git/addrs/provider.go:114 +0x8b
+github.com/hashicorp/terraform/configs.(*Module).ImpliedProviderForUnqualifiedType(...)
+	/Users/adhorden/adhorden/terraform_git/configs/module.go:517
+github.com/hashicorp/terraform/configs.(*Module).ProviderForLocalConfig(0xc000098510, 0xc00050aa38, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/Users/adhorden/adhorden/terraform_git/configs/module.go:503 +0x104
+github.com/hashicorp/terraform/configs.(*Config).addProviderRequirements(0xc0000b2c30, 0xc000097170, 0x400, 0x203000, 0x400)
+	/Users/adhorden/adhorden/terraform_git/configs/config.go:226 +0x7ff
+github.com/hashicorp/terraform/configs.(*Config).ProviderRequirements(...)
+	/Users/adhorden/adhorden/terraform_git/configs/config.go:177
+github.com/hashicorp/terraform/command.(*InitCommand).getProviders(0xc00055c700, 0xc0000b2c30, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/Users/adhorden/adhorden/terraform_git/command/init.go:416 +0x77
+github.com/hashicorp/terraform/command.(*InitCommand).Run(0xc00055c700, 0xc00003a0c0, 0x7, 0x8, 0xc00007cf20)
+	/Users/adhorden/adhorden/terraform_git/command/init.go:282 +0x12f7
+github.com/mitchellh/cli.(*CLI).Run(0xc000360280, 0xc000360280, 0xc00063fd48, 0x1)
+	/Users/adhorden/adhorden/terraform_git/vendor/github.com/mitchellh/cli/cli.go:255 +0x1da
+main.wrappedMain(0x0)
+	/Users/adhorden/adhorden/terraform_git/main.go:269 +0xcc6
+main.realMain(0x0)
+	/Users/adhorden/adhorden/terraform_git/main.go:106 +0xde
+main.main()
+	/Users/adhorden/adhorden/terraform_git/main.go:42 +0x3a
